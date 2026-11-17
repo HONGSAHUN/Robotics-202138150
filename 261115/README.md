@@ -162,48 +162,13 @@ void loop() {
 }
 ```
 
-#### 기존 코드에서 개선할 부분
-
-- `position < 180`이므로 목표 각도는 0–179도까지 증가
-- 감소하는 반복문이 없어서 마지막에는 목표값이 바로 0으로 돌아감
-- 와이퍼처럼 왕복하려면 **증가 → 감소**하는 반복문이 모두 필요
-
-#### 개선 코드
-
-```cpp
-#include <ESP32Servo.h>
-
-#define SERVO_PIN 14
-
-Servo myServo;
-
-void setup() {
-  myServo.attach(SERVO_PIN);
-  myServo.write(0);
-}
-
-void loop() {
-  for (int position = 0; position <= 180; position++) {
-    myServo.write(position);
-    delay(10);
-  }
-
-  for (int position = 179; position > 0; position--) {
-    myServo.write(position);
-    delay(10);
-  }
-}
-```
-
-0–180도로 증가한 뒤 179–1도로 감소하고, 다음 `loop()`에서 0도로 이어집니다. 목표값을 1도씩 바꾸므로 기존 코드처럼 179도에서 바로 0도로 명령이 바뀌지 않습니다. `delay(10)`은 명령 사이의 간격입니다.
-
 #### 실행 방법
 
 1. `servo_test/servo_wiper/servo_wiper.ino`를 엽니다.
-2. 서보의 신호선, 전원선, GND 연결을 확인합니다.
-3. 증가 방향과 감소 방향의 반복문을 추가한 개선 코드를 적용합니다.
-4. 컴파일한 뒤 ESP32에 업로드합니다.
-5. 서보가 양쪽 방향으로 반복해서 왕복하는지 확인합니다.
+2. 서보의 신호선은 GPIO14, 전원선은 5V에 연결하고 ESP32와 GND를 공유합니다.
+3. Arduino IDE에서 사용하는 ESP32 보드와 USB 포트를 선택합니다.
+4. 기존 실습 코드를 컴파일한 뒤 ESP32에 업로드합니다.
+5. 서보가 한쪽 방향으로 회전한 뒤 시작 위치로 돌아가는 동작을 반복하는지 확인합니다.
 
 ### 2. servo_potentiometer.ino
 
@@ -268,7 +233,7 @@ void loop() {
 
 1. `servo_test/servo_potentiometer/servo_potentiometer.ino`를 엽니다.
 2. 서보 연결을 유지하고, PCB에 부착된 가변저항을 사용합니다. 가변저항의 입력은 GPIO39로 읽습니다.
-3. `map`의 입력 범위를 0–4095로 수정합니다.
+3. `map`의 입력 범위를 0–4095로 수정합니다. (수정 코드 반영 시)
 4. 컴파일한 뒤 ESP32에 업로드합니다.
 5. 보드의 가변저항을 돌려 입력에 따라 서보가 움직이는지 확인합니다.
 
