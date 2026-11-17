@@ -17,6 +17,24 @@ GPIO의 디지털 출력, 저항을 이용한 전류 제한, 공통 GND를 적�
 
 ![LED 점멸 실습](./Pasted%20image.png)
 
+```cpp
+const int ledPin = 7;
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(ledPin, HIGH);
+  delay(1000);
+
+  digitalWrite(ledPin, LOW);
+  delay(1000);
+}
+```
+
 ## 실행 방법
 
 ### swanky_blad_waasa1.ino
