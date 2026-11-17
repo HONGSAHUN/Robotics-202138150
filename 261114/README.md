@@ -4,7 +4,7 @@
 
 GPIO의 디지털 출력, 저항을 이용한 전류 제한, 공통 GND를 적용한 LED 점멸 실습입니다. Uno D7에 저항과 LED를 연결한 뒤, 핀을 출력으로 설정하고 HIGH와 LOW 사이에 각각 1초 지연을 넣었습니다. 회로와 실행 코드는 `Pasted image.png`에 저장했습니다.
 
-코드상 점등과 소등은 각각 1초이며, 한 주기는 약 2초입니다.
+Tinkercad 시뮬레이션에서 LED가 켜짐과 꺼짐을 반복하는 것을 확인했습니다.
 
 ## 파일 구조
 
@@ -14,6 +14,20 @@ GPIO의 디지털 출력, 저항을 이용한 전류 제한, 공통 GND를 적�
 ├── swanky_blad_waasa1.ino   # D7 LED 점멸 코드
 └── Pasted image.png         # Tinkercad 회로 및 코드 화면
 ```
+
+
+## 실습 환경 및 의존성
+
+### Tinkercad 실습
+
+- Tinkercad Circuits
+- Arduino Uno R3
+- 브레드보드
+- LED
+- LED 전류 제한용 저항 220Ω
+- 연결선
+
+## 구현 결과
 
 ![LED 점멸 실습](./Pasted%20image.png)
 
@@ -39,7 +53,7 @@ void loop()
 
 ### swanky_blad_waasa1.ino
 
-1. Tinkercad Circuits에서 Arduino Uno R3, 브레드보드, LED와 저항을 배치합니다.
+1. Tinkercad Circuits에서 Arduino Uno R3, 브레드보드, LED와 저항(220Ω)을 배치합니다.
 2. 이미지처럼 D7에서 저항과 LED를 거쳐 GND로 연결합니다.
 3. Code → Text에서 `swanky_blad_waasa1.ino` 내용을 붙여 넣습니다.
 4. Start Simulation을 누릅니다.
