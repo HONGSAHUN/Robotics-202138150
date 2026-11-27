@@ -186,6 +186,8 @@ LiDAR의 230400은 ESP32와 LiDAR 사이 속도이고, 시리얼 모니터는 11
 
 ## 배운 이론 정리
 
+> 수업 필기 원본(Notion): [2주차 토요일 정리](https://app.notion.com/p/2-41fb0f384e6d807aba7cd4b6e4dda85f)
+
 ### IMU
 
 **I**nertial **M**easurement **U**nit
