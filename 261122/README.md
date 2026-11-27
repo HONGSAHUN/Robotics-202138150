@@ -2,24 +2,28 @@
 
 ## 실습 과정 및 결과
 
-어제 만든 `1_pubsub` 패키지에 노드 3개를 추가해서, 키보드로 W/A/S/D를 입력하면 좌표가 바뀌는 실습을 했습니다. `publisher`가 키 입력을 보내고, `processor`가 좌표를 계산해서 다시 보내고, `subscriber`가 현재 좌표를 출력합니다.
+어제 만든 `1_pubsub` 패키지를 이어서 사용하고, 노드 3개를 새로 작성해 키보드로 W/A/S/D를 입력하면 좌표가 바뀌는 실습을 했습니다. `publisher`가 키 입력을 보내고, `processor`가 좌표를 계산해서 다시 보내고, `subscriber`가 현재 좌표를 출력합니다.
 
 다음으로 `custom_interfaces` 패키지에 메시지와 서비스를 직접 정의하고, `2_srvmsg` 패키지에서 서버 / 클라이언트를 작성했습니다. 덧셈 서비스(`add_ints`)를 먼저 만들고, 이걸 바탕으로 현재 위치와 거리를 보내면 이동 후 위치를 돌려주는 `move_robot`을 만들었습니다.
 
-## 파일 구조 
+## 파일 구조
 
 ```text
 261122/
 ├── README.md
 ├── 1_pubsub/
 │   ├── 1_pubsub/
+│   │   ├── __init__.py
 │   │   ├── publisher.py            # 키 입력 → /demo_topic
 │   │   ├── processor.py            # 좌표 계산 → /position_topic
 │   │   └── subscriber.py           # 좌표 출력
 │   ├── launch/
 │   │   └── my_location.launch.py   # 세 노드 실행
+│   ├── resource/1_pubsub
+│   ├── test/
 │   ├── package.xml
-│   └── setup.py
+│   ├── setup.cfg
+│   └── setup.py                    # publisher, processor, subscriber 실행 등록
 ├── custom_interfaces/
 │   ├── msg/
 │   │   ├── Num.msg
@@ -27,16 +31,20 @@
 │   ├── srv/
 │   │   ├── AddTwoInts.srv
 │   │   └── MoveRobot.srv
-│   ├── CMakeLists.txt
+│   ├── CMakeLists.txt              # rosidl_generate_interfaces()에 msg, srv 등록
 │   └── package.xml
 └── 2_srvmsg/
     ├── 2_srvmsg/
+    │   ├── __init__.py
     │   ├── add_ints_server.py
     │   ├── add_ints_client.py
     │   ├── move_robot_server.py
     │   └── move_robot_client.py
+    ├── resource/2_srvmsg
+    ├── test/
     ├── package.xml
-    └── setup.py
+    ├── setup.cfg
+    └── setup.py                    # 서버, 클라이언트 4개 실행 등록
 ```
 
 ## 실습 환경 및 의존성
@@ -153,7 +161,10 @@ response.success = True
 | 0 0 90 1 | (0, 1) |
 | 1 2 0 3 | (4, 2) |
 
-90도를 넣으면 x가 `6.12e-17`처럼 나오는데, 0에 아주 가까운 값이고 실수 계산 오차입니다. `:.2f`로 출력하면 `0.00`으로 나옵니다.
+## 결과 분석
+
+### move_robot
+- 90도를 넣으면 x가 `6.12e-17`처럼 나오는데, 0에 아주 가까운 값이고 실수 계산 오차입니다. 현재 클라이언트는 값을 그대로 출력하고, `:.2f`로 포맷하면 `0.00`으로 보입니다.
 
 ## 실행 방법
 
