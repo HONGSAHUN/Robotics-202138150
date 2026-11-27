@@ -12,6 +12,11 @@ IMU는 I²C, LiDAR는 UART로 값을 읽어 시리얼 모니터에서 확인했�
 ```text
 261121/
 ├── README.md
+├── notes/                      # 손필기 노트
+│   ├── 26-2-1-1.JPG
+│   ├── 26-2-1-2.JPG
+│   ├── 26-2-1-3.JPG
+│   └── 26-2-1-4.JPG
 ├── 1_pubsub/
 │   ├── 1_pubsub/
 │   │   ├── __init__.py
