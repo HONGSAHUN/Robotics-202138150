@@ -167,6 +167,18 @@ ros2 run 1_pubsub listener
 
 LiDAR의 230400은 ESP32와 LiDAR 사이 속도이고, 시리얼 모니터는 115200입니다.
 
+## 필기 정리 노트
+
+<p>
+  <img src="./notes/26-2-1-1.JPG" alt="필기 1" width="48%">
+  <img src="./notes/26-2-1-2.JPG" alt="필기 2" width="48%">
+</p>
+<p>
+  <img src="./notes/26-2-1-3.JPG" alt="필기 3" width="48%">
+  <img src="./notes/26-2-1-4.JPG" alt="필기 4" width="48%">
+</p>
+
+
 ## 배운 이론 정리
 
 ### IMU
