@@ -11,40 +11,26 @@
 ```text
 261122/
 ├── README.md
-├── 1_pubsub/
+├── notes/26-2-2-1.JPG                # 손필기 노트
+├── 1_pubsub/                         # ament_python 패키지
 │   ├── 1_pubsub/
-│   │   ├── __init__.py
-│   │   ├── publisher.py            # 키 입력 → /demo_topic
-│   │   ├── processor.py            # 좌표 계산 → /position_topic
-│   │   └── subscriber.py           # 좌표 출력
-│   ├── launch/
-│   │   └── my_location.launch.py   # 세 노드 실행
-│   ├── resource/1_pubsub
-│   ├── test/
-│   ├── package.xml
-│   ├── setup.cfg
-│   └── setup.py                    # publisher, processor, subscriber 실행 등록
-├── custom_interfaces/
-│   ├── msg/
-│   │   ├── Num.msg
-│   │   └── RobotPose.msg
-│   ├── srv/
-│   │   ├── AddTwoInts.srv
-│   │   └── MoveRobot.srv
-│   ├── CMakeLists.txt              # rosidl_generate_interfaces()에 msg, srv 등록
+│   │   ├── publisher.py              # 키 입력 → /demo_topic
+│   │   ├── processor.py              # 좌표 계산 → /position_topic
+│   │   └── subscriber.py             # 좌표 출력
+│   ├── launch/my_location.launch.py  # 세 노드 실행
+│   └── setup.py 외 기본 파일            # package.xml, setup.cfg, resource/, test/
+├── custom_interfaces/                # ament_cmake 인터페이스 패키지
+│   ├── msg/                          # Num.msg, RobotPose.msg
+│   ├── srv/                          # AddTwoInts.srv, MoveRobot.srv
+│   ├── CMakeLists.txt                # rosidl_generate_interfaces()에 등록
 │   └── package.xml
-└── 2_srvmsg/
+└── 2_srvmsg/                         # ament_python 패키지
     ├── 2_srvmsg/
-    │   ├── __init__.py
     │   ├── add_ints_server.py
     │   ├── add_ints_client.py
     │   ├── move_robot_server.py
     │   └── move_robot_client.py
-    ├── resource/2_srvmsg
-    ├── test/
-    ├── package.xml
-    ├── setup.cfg
-    └── setup.py                    # 서버, 클라이언트 4개 실행 등록
+    └── setup.py 외 기본 파일            # package.xml, setup.cfg, resource/, test/
 ```
 
 ## 실습 환경 및 의존성
@@ -211,7 +197,15 @@ ros2 run 2_srvmsg move_robot_client 0 0 30 1
 
 클라이언트에는 `x y theta(도) distance` 순서로 숫자 4개를 넣습니다.
 
+## 필기 정리 노트
+
+<p>
+  <img src="./notes/26-2-2-1.JPG" alt="필기 1" width="60%">
+</p>
+
 ## 배운 이론 정리
+
+> 수업 필기 원본(Notion): [2주차 일요일 정리](https://app.notion.com/p/2-420b0f384e6d8093bfbffda667801948)
 
 ### 노드 역할 나누기
 
