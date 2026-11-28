@@ -1,0 +1,32 @@
+from setuptools import find_packages, setup
+
+package_name = '3_lidar'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='edu56',
+    maintainer_email='hoonie8530@gachon.ac.kr',
+    description='TODO: Package description',
+    license='TODO: License declaration',
+    extras_require={
+        'test': [
+            'pytest',
+        ],
+    },
+    entry_points={
+        'console_scripts': [
+            'simple_oa = 3_lidar.simple_oa:main',
+            'simple_yaw_oa = 3_lidar.simple_yaw_oa:main',
+            'simple_yaw_oa_back = 3_lidar.simple_yaw_oa_back:main'
+        ],
+    },
+)
